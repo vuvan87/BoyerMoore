@@ -53,7 +53,6 @@ public class BoyerMoore {
     N - 4
     T - 5
     A - 6
-
      */
     public ArrayList<Integer> boyerSearch(String text, String pattern) {
         /* finish searching, return list of matched indexes */
@@ -63,9 +62,9 @@ public class BoyerMoore {
         }
         /* Hashtable of searching pattern (last table) */
         makeTable(pattern); 
-        int indexPattern = pattern.length() - 1; //6
-        int indexText = pattern.length() - 1; //6
-        int length = pattern.length() - 1; //6
+        int indexPattern = pattern.length() - 1; 
+        int indexText = pattern.length() - 1; 
+        int length = pattern.length() - 1;
         int getIndex; 
         boolean check;
         while (indexPattern > 0 && indexText < text.length()) {
