@@ -1,0 +1,11 @@
+ 
+Minimum Spanning Trees and Shortest Paths
+ 
+You have been hired by Crazy Bob Trucking (CBT) to work in their Computer Department.  CBT
+is based in Atlanta and sends trucks all over the southeast to deliver cargo.  The basic
+map of the southeast is in a data file of cities and the distance between them in miles. 
+For example:
+ 
+Atlanta,Macon,84
+Atlanta,Albany,180
+Albany,Savannah,246
