@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Van Vu 2230 on 7/21/2015.
+ * Created by Van Vu on 7/21/2015.
  * Boyer Moore searching algorithm
  */
 public class BoyerMoore {
-    private HashMap<Character, Integer> mapPattern; //last table
+    private HashMap<Character, Integer> mapPattern;
     private int count;
     private ArrayList<Integer> index;
     public BoyerMoore() {
@@ -19,7 +19,7 @@ public class BoyerMoore {
     }
     public HashMap<Character, Integer> getMapPattern() {
         return mapPattern;
-    } // last table
+    } 
     public int getCount() {
         return count;
     }
@@ -56,12 +56,12 @@ public class BoyerMoore {
 
      */
     public ArrayList<Integer> boyerSearch(String text, String pattern) {
-        // finish searching, return list of matched indexes
+        /* finish searching, return list of matched indexes */
         if (pattern.length() == 0 || text.length() < pattern.length()) {
             index.add(-1);
             return index;
         }
-        // Hashtable of searching pattern (last table)
+        /* Hashtable of searching pattern (last table) */
         makeTable(pattern); 
         int indexPattern = pattern.length() - 1; //6
         int indexText = pattern.length() - 1; //6
@@ -73,35 +73,32 @@ public class BoyerMoore {
                 indexText--;
                 indexPattern--;
                 if (indexPattern == 0 && (indexPattern + pattern.length()) < text.length() ) {
-                //still have text in string, keep searching
+                /*still have text in string, keep searching*/
                     index.add(indexText);
                     indexText = indexText + pattern.length();
                     indexPattern = pattern.length() - 1;
                     count++;
                 } else if (indexPattern == 0 && (indexPattern + pattern.length()) > text.length()) {
-                    // found a match, add to output
+                    /* found a match, add to output */
                     index.add(indexText);
                 }
-            } else { // not match -> shift follow Bad character Boyer Moore rule
+            } else { /* not match -> shift follow Bad character Boyer Moore rule */
                 check = mapPattern.containsKey(text.charAt(indexText));
-                 // check if the key is in the map
-                if (check) { //case the key is in the map
-                    getIndex = mapPattern.get(text.charAt(indexText)); // get the index
+                if (check) { 
+                    getIndex = mapPattern.get(text.charAt(indexText)); 
                     System.out.println("get index is" + getIndex);
-                    indexText = indexText + (length - getIndex); // shift amount of (pattern length - index)
-                } else { // case key is not in the map, shift all the way pass that letter
+                    indexText = indexText + (length - getIndex); 
+                } else { 
                     indexText = indexText + pattern.length();
                 }
-                //if (indexPattern != (pattern.length() -1)) {
                 indexPattern = pattern.length() - 1;
-                // reset index of pattern after shifting
             }
         }
         if (indexPattern != length) {
-            return index; // all strings are matched
+            return index; 
         }
         index.add((-1));
-        return index; // can not find the pattern
+        return index; 
     }
 
     /*
